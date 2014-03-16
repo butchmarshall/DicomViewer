@@ -3,28 +3,137 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <title>Minimal by Steve Smith</title>
+    <title>Dicom Viewer</title>
     
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/pygment_trac.css">
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <script type="text/javascript" src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
+    <script type="text/javascript" src="//rawgithub.com/butchmarshall/DicomViewer/master/dicom_viewer.js"></script>
+    <script type="text/javascript">
+      var set1 = null,
+      set1_data = [
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame1.png",
+          text_top_right: "Image #1",
+          text_top_left: "Click and drag the image<br/>to window and level",
+          text_bottom_left: "You can set custom<br/>text here",
+          text_bottom_right: "Right text"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame2.png",
+          text_top_right: "Image #2",
+          text_bottom_left: "Which is configurable<br/>from the data set passed"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame3.png",
+          text_top_right: "Image #3"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame4.png",
+          text_top_right: "Image #4"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame5.png",
+          text_top_right: "Image #5"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame6.png",
+          text_top_right: "Image #6"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame7.png",
+          text_top_right: "Image #7"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame8.png",
+          text_top_right: "Image #8"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame9.png",
+          text_top_right: "Image #9"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame10.png",
+          text_top_right: "Image #10"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame11.png",
+          text_top_right: "Image #11"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame12.png",
+          text_top_right: "Image #12"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame13.png",
+          text_top_right: "Image #13"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame14.png",
+          text_top_right: "Image #14"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame15.png",
+          text_top_right: "Image #15"
+        },
+        {
+          src: "images/set1/MR-MONO2-8-16x-heart-Frame16.png",
+          text_top_right: "Image #16"
+        }
+      ],
+      set2 = null,
+      set2_data = [
+        
+      ];
+
+      document.addEventListener('DOMContentLoaded', function() {
+        set1 = new DicomViewer({
+          data: set1_data,
+          width: 500,
+          height: 500
+        });
+        document.getElementById("set1").appendChild(set1.dom);
+        document.getElementById("set1_prev").addEventListener("click", function() {
+          set1.previousDicom();
+        });
+        document.getElementById("set1_next").addEventListener("click", function() {
+          set1.nextDicom();
+        });
+      });
+    </script>
+    <style type="text/css">
+      #set1_prev {
+        float: left;
+      }
+      #set1_next {
+        float: right;
+      }
+    </style>
   </head>
   <body>
     <div class="wrapper">
       <header>
-        <h1>Minimal</h1>
-        <p>A Theme for GitHub Pages</p>
-        <p class="view"><a href="http://github.com/orderedlist/minimal">View the Project on GitHub <small>orderedlist/minimal</small></a></p>
+        <h1>DicomViewer</h1>
+        <p>A canvas image viewer with window and leveling</p>
+        <p class="view"><a href="http://github.com/butchmarshall/DicomViewer">View the Project on GitHub <small>butchmarshall/DicomViewer</small></a></p>
         <ul>
-          <li><a href="https://github.com/orderedlist/minimal/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/orderedlist/minimal/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="http://github.com/orderedlist/minimal">Fork On <strong>GitHub</strong></a></li>
+          <li><a href="https://github.com/butchmarshall/DicomViewer/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/butchmarshall/DicomViewer/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="http://github.com/butchmarshall/DicomViewer">Fork On <strong>GitHub</strong></a></li>
         </ul>
       </header>
       <section>
+        <h1>Sample #1</h1>
+        <p>Sample from <a href="http://www.barre.nom.fr/medical/samples/">http://www.barre.nom.fr/medical/samples/</a></p>
+        <div id="set1"></div>
+        <div>
+          <a href="#" onclick="return false;" id="set1_prev">Previous Image</a>
+          <a href="#" onclick="return false;" id="set1_next">Next Image</a>
+        </div>
+<!--
         <h1>Let&rsquo;s Test Some Markup</h1>
         <p><em>View the <a href="http://github.github.com/github-flavored-markdown/sample_content.html">source of this content</a>.</em></p>
         <p>Let's get the whole "linebreak" thing out of the way. The next paragraph contains two phrases separated by a single newline character:</p>
@@ -130,9 +239,10 @@ end</code></pre>
         <p>Lorem ipsizzle funky fresh i'm in the shizzle boom shackalack, consectetizzle adipiscing my shizz. Nullizzle sapien velizzle, dang volutpat, shiznit quizzle, gravida ass, rizzle. Pot get down get down tortor. Sed erizzle. Black go to hizzle dolizzle dapibizzle turpis fo shizzle my nizzle yo. Maurizzle pellentesque nibh et check it out. Bow wow wow check it out tortizzle. Pellentesque for sure rhoncizzle bow wow wow. In owned habitasse brizzle dictumst. Nizzle dapibizzle. Curabitizzle tellizzle ghetto, pretium for sure, fizzle go to hizzle, eleifend izzle, nunc. Dope suscipizzle. Integizzle boom shackalack velit ass purus.</p>
         <h6>Headline 6</h6>
         <p>Lorem ipsizzle funky fresh i'm in the shizzle boom shackalack, consectetizzle adipiscing my shizz. Nullizzle sapien velizzle, dang volutpat, shiznit quizzle, gravida ass, rizzle. Pot get down get down tortor. Sed erizzle. Black go to hizzle dolizzle dapibizzle turpis fo shizzle my nizzle yo. Maurizzle pellentesque nibh et check it out. Bow wow wow check it out tortizzle. Pellentesque for sure rhoncizzle bow wow wow. In owned habitasse brizzle dictumst. Nizzle dapibizzle. Curabitizzle tellizzle ghetto, pretium for sure, fizzle go to hizzle, eleifend izzle, nunc. Dope suscipizzle. Integizzle boom shackalack velit ass purus.</p>
+-->
       </section>
       <footer>
-        <p>This project is maintained by <a href="http://github.com/orderedlist">Steve Smith</a></p>
+        <p>This project is maintained by <a href="http://github.com/butchmarshall">Butch Marshall</a></p>
         <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
